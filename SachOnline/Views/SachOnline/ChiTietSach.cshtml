@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietSach";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .Title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    /* Định dạng ảnh sách */
+    /*img {
+      //  max-width: 100%;
+       // height: auto;
+       // margin-top: 10px;
+   // }*/
+
+    /* Định dạng mô tả sách */
+    .motasach {
+        margin-top: 20px;
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: justify !important;
+        
+    }
+
+    /* Định dạng ngày cập nhật */
+    .ngaycapnhat {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    /* Định dạng giá bán */
+    .giaban {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #e74c3c; /* Màu đỏ cho giá bán */
+    }
+
+    /* Định dạng nút Add to Cart */
+    .addtocard {
+        margin-top: 20px;
+    }
+
+    /* Định dạng nút mua sách */
+    .btn-primary {
+        background-color: #3498db; /* Màu xanh dương cho nút mua sách */
+        border-color: #3498db;
+        color: #fff;
+        font-weight: bold;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9; /* Màu xanh dương nhạt khi hover */
+            border-color: #2980b9;
+        }
+</style>
+<h4 class="Title">
+    @Model.Title
+</h4>
+<div class="text-center">
+    <img src="~/Images/@Model.Images" alt="@Model.Title" />
+
+    <div class="motasach" align="center">
+        <p>
+            @Html.Raw(Model.Description.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </p>
+    </div>
+
+    <p class="ngaycapnhat">Ngày cập nhật: @Html.FormatValue(@Model.Published, "{0:dd/MM/yyyy}")</p>
+    <p class="giaban">Giá bán:<span>@Html.FormatValue(@Model.Price, "{0:#,##0}") VNĐ</span></p>
+    <p class="addtocard">
+        <a href="@Url.Action("ThemGioHang","GioHang", new { ms = Model.BookID, url =Request.Url.ToString() })
+" class="btn btn-primary"
+           role="button">
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Add to Cart
+        </a>
+    </p>
+</div>
+
