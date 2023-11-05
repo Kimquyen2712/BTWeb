@@ -48,12 +48,12 @@ namespace SachOnline.Controllers
             {
                 ViewData["Loi4"] = "Phai nhap lai mat khau";
             }
-            if (String.IsNullOrEmpty(email))
+            else if (String.IsNullOrEmpty(email))
             {
                 ViewData["Loi5"] = "Email khong duoc bo trong  ";
 
             }
-            if (String.IsNullOrEmpty(dienthoai))
+            else if (String.IsNullOrEmpty(dienthoai))
             {
                 ViewData["Loi6"] = "Phai nhap dien thoai";
             }
@@ -81,20 +81,23 @@ namespace SachOnline.Controllers
         [HttpPost]
         public ActionResult Dangnhap(FormCollection collection)
         {
-            int state = int.Parse(Request.QueryString["id"]);
+            
             //gán các giá trị người dùng nhập cho biến
             var tendn = collection["TenDN"];
             var matkhau = collection["Matkhau"];
             if (string.IsNullOrEmpty(tendn))
             {
-                ViewBag["Loi1"] = "Phải nhập tên đăng nhập";
+                ViewData["Loi1"] = "Phải nhập tên đăng nhập";
+                //ViewBag.Loi1 = "Phải nhập tên đăng nhập";
+
             }
             else if (string.IsNullOrEmpty(matkhau))
             {
-                ViewBag["Loi2"] = "Phải nhập mật khẩu";
+                ViewData["Loi2"] = "Phải nhập mật khẩu";
             }
             else
             {
+                int state = int.Parse(Request.QueryString["id"]);
                 //gán giá trị cho đôi tượng tạo mới(kh)
                 KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.Taikhoan == tendn && n.Matkhau == matkhau);
                 if(kh != null)
