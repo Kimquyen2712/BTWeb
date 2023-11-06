@@ -26,12 +26,12 @@ namespace SachOnline.Controllers
         {
             var hoten = collection["Hoten"];
             var tendn = collection["TenDN"];
-            var matkhau = collection["Matkhau"];
-            var matkhaunhaplai = collection["Matkhaunhaplai"];
-            var diachi = collection["Diachi"];
+            var matkhau = collection["MatKhau"];
+            var matkhaunhaplai = collection["MatKhauNL"];
+            var diachi = collection["DiaChi"];
             var email = collection["Email"];
-            var dienthoai = collection["Dienthoai"];
-            var ngaysinh = String.Format("{0:MM/dd/yyyy}", collection["Ngaysinh"]);
+            var dienthoai = collection["DienThoai"];
+            var ngaysinh = String.Format("{0:MM/dd/yyyy}", collection["NgaySinh"]);
             if (String.IsNullOrEmpty(hoten))
             {
                 ViewData["Loi1"] = "Ho ten khach hang khong duoc de trong";
@@ -84,7 +84,7 @@ namespace SachOnline.Controllers
             
             //gán các giá trị người dùng nhập cho biến
             var tendn = collection["TenDN"];
-            var matkhau = collection["Matkhau"];
+            var matkhau = collection["MatKhau"];
             if (string.IsNullOrEmpty(tendn))
             {
                 ViewData["Loi1"] = "Phải nhập tên đăng nhập";
