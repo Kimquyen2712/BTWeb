@@ -632,6 +632,10 @@ namespace SachOnline.Models
 		
 		private EntitySet<VIETSACH> _VIETSACHes;
 		
+		private EntityRef<Category> _Category;
+		
+		private EntityRef<NhaXuatBan> _NhaXuatBan;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -662,6 +666,8 @@ namespace SachOnline.Models
 		{
 			this._CHITIETDATHANGs = new EntitySet<CHITIETDATHANG>(new Action<CHITIETDATHANG>(this.attach_CHITIETDATHANGs), new Action<CHITIETDATHANG>(this.detach_CHITIETDATHANGs));
 			this._VIETSACHes = new EntitySet<VIETSACH>(new Action<VIETSACH>(this.attach_VIETSACHes), new Action<VIETSACH>(this.detach_VIETSACHes));
+			this._Category = default(EntityRef<Category>);
+			this._NhaXuatBan = default(EntityRef<NhaXuatBan>);
 			OnCreated();
 		}
 		
@@ -776,6 +782,10 @@ namespace SachOnline.Models
 			{
 				if ((this._CategoryID != value))
 				{
+					if (this._Category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnCategoryIDChanging(value);
 					this.SendPropertyChanging();
 					this._CategoryID = value;
@@ -856,6 +866,10 @@ namespace SachOnline.Models
 			{
 				if ((this._NhaXuatBanID != value))
 				{
+					if (this._NhaXuatBan.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnNhaXuatBanIDChanging(value);
 					this.SendPropertyChanging();
 					this._NhaXuatBanID = value;
@@ -888,6 +902,74 @@ namespace SachOnline.Models
 			set
 			{
 				this._VIETSACHes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Book", Storage="_Category", ThisKey="CategoryID", OtherKey="CategoryID", IsForeignKey=true)]
+		public Category Category
+		{
+			get
+			{
+				return this._Category.Entity;
+			}
+			set
+			{
+				Category previousValue = this._Category.Entity;
+				if (((previousValue != value) 
+							|| (this._Category.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Category.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._Category.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._CategoryID = value.CategoryID;
+					}
+					else
+					{
+						this._CategoryID = default(int);
+					}
+					this.SendPropertyChanged("Category");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NhaXuatBan_Book", Storage="_NhaXuatBan", ThisKey="NhaXuatBanID", OtherKey="NhaXuatBanID", IsForeignKey=true)]
+		public NhaXuatBan NhaXuatBan
+		{
+			get
+			{
+				return this._NhaXuatBan.Entity;
+			}
+			set
+			{
+				NhaXuatBan previousValue = this._NhaXuatBan.Entity;
+				if (((previousValue != value) 
+							|| (this._NhaXuatBan.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NhaXuatBan.Entity = null;
+						previousValue.Books.Remove(this);
+					}
+					this._NhaXuatBan.Entity = value;
+					if ((value != null))
+					{
+						value.Books.Add(this);
+						this._NhaXuatBanID = value.NhaXuatBanID;
+					}
+					else
+					{
+						this._NhaXuatBanID = default(int);
+					}
+					this.SendPropertyChanged("NhaXuatBan");
+				}
 			}
 		}
 		
@@ -946,6 +1028,8 @@ namespace SachOnline.Models
 		
 		private string _CategoryName;
 		
+		private EntitySet<Book> _Books;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -958,6 +1042,7 @@ namespace SachOnline.Models
 		
 		public Category()
 		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
 			OnCreated();
 		}
 		
@@ -1001,6 +1086,19 @@ namespace SachOnline.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Book", Storage="_Books", ThisKey="CategoryID", OtherKey="CategoryID")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1019,6 +1117,18 @@ namespace SachOnline.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category = null;
 		}
 	}
 	
@@ -1757,6 +1867,8 @@ namespace SachOnline.Models
 		
 		private string _NhaXuatBanName;
 		
+		private EntitySet<Book> _Books;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1769,6 +1881,7 @@ namespace SachOnline.Models
 		
 		public NhaXuatBan()
 		{
+			this._Books = new EntitySet<Book>(new Action<Book>(this.attach_Books), new Action<Book>(this.detach_Books));
 			OnCreated();
 		}
 		
@@ -1812,6 +1925,19 @@ namespace SachOnline.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NhaXuatBan_Book", Storage="_Books", ThisKey="NhaXuatBanID", OtherKey="NhaXuatBanID")]
+		public EntitySet<Book> Books
+		{
+			get
+			{
+				return this._Books;
+			}
+			set
+			{
+				this._Books.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1830,6 +1956,18 @@ namespace SachOnline.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.NhaXuatBan = this;
+		}
+		
+		private void detach_Books(Book entity)
+		{
+			this.SendPropertyChanging();
+			entity.NhaXuatBan = null;
 		}
 	}
 	

@@ -37,12 +37,15 @@
       <Column Name="NhaXuatBanID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Book_CHITIETDATHANG" Member="CHITIETDATHANGs" ThisKey="BookID" OtherKey="BookID" Type="CHITIETDATHANG" />
       <Association Name="Book_VIETSACH" Member="VIETSACHes" ThisKey="BookID" OtherKey="BookID" Type="VIETSACH" />
+      <Association Name="Category_Book" Member="Category" ThisKey="CategoryID" OtherKey="CategoryID" Type="Category" IsForeignKey="true" />
+      <Association Name="NhaXuatBan_Book" Member="NhaXuatBan" ThisKey="NhaXuatBanID" OtherKey="NhaXuatBanID" Type="NhaXuatBan" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Category" Member="Categories">
     <Type Name="Category">
       <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CategoryName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Category_Book" Member="Books" ThisKey="CategoryID" OtherKey="CategoryID" Type="Book" />
     </Type>
   </Table>
   <Table Name="dbo.CHITIETDATHANG" Member="CHITIETDATHANGs">
@@ -84,6 +87,7 @@
     <Type Name="NhaXuatBan">
       <Column Name="NhaXuatBanID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="NhaXuatBanName" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="NhaXuatBan_Book" Member="Books" ThisKey="NhaXuatBanID" OtherKey="NhaXuatBanID" Type="Book" />
     </Type>
   </Table>
   <Table Name="dbo.VIETSACH" Member="VIETSACHes">
