@@ -8,18 +8,7 @@
 
 }
 
-<style type="text/css">
-    .imgbook {
-        transition: all 1s ease-in;
-        width: 202.5px !important;
-        height: 253.13px !important;
-    }
 
-        .imgbook:hover {
-            transform: scale(0.9);
-            cursor: pointer;
-        }
-</style>
 <h2 style="text-align:center">Sách theo chủ đề</h2>
 
 
@@ -46,17 +35,7 @@
     }
 </div>
 
-@*Tạo liên kết các trang*@
 
-Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount<div class="MenuTrang">
-    @Html.PagedListPager(Model, page => Url.Action("SachTheoChuDe", new { iMaCD = ViewBag.CategoryID, page = page }))
-</div>
-<style>
-    .MenuTrang {
-        display: inline;
-        text-align: center;
-    }
-</style>
 
 @*<nav class="text-center">
 

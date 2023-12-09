@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "taikhoan";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@using SachOnline.Models;
+@using PagedList.Mvc;
+@model SachOnline.Models.KHACHHANG
+<!-- Thêm Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iN17Np6dF+JpDjOKJKjsS/DIeq1i6D5YevvB6egU6W6/8U5P6b1wZl81l" crossorigin="anonymous">
+<div class="toolbar">
+    <i class="icon" id="icon1"><a href="@Url.Action("taikhoan","SachOnline") "><img src="~/images/taikhoan.png"></a></i>
+    <i class="icon" id="icon2"><a href="@Url.Action("thaydoi","User") "><img src="~/images/suataikhoan.png"></a></i>
+    <i class="icon" id="icon3"><a href="@Url.Action("Xem","SachOnline") "><img src="~/images/donhangcu.png"></a></i>
+</div>
+
+<div class="product_section layout_padding">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="customer_taital">THÔNG TIN KHÁCH HÀNG</h1>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <h1 style="color: green;">@Html.DisplayFor(model => model.HoTen)</h1>
+        </div>
+
+        <div class="order-details-container">
+
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Tài khoản:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Taikhoan)
+                </dd>
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Email:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Địa chỉ:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DiachiKH)
+                </dd>
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Điện thoại:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DienThoaiKH)
+                </dd>
+
+
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Ngày sinh:
+                </dt>
+
+                <dd>
+                    @Html.FormatValue(Model.Ngaysinh, "{0:dd/MM/yyyy}")
+                </dd>
+
+
+
+
+            </dl>
+
+        </div>
+
+        <style>
+            .order-details-container {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dl-horizontal {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 0;
+            }
+
+                .dl-horizontal dt {
+                    flex-basis: 30%;
+                    text-align: right;
+                    margin-right: 10px;
+                }
+
+                .dl-horizontal dd {
+                    flex-basis: 65%;
+                    margin-bottom: 10px;
+                }
+
+            .order-details-container h2 {
+                text-align: center;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            .toolbar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50px; /* Điều chỉnh chiều cao theo nhu cầu của bạn */
+                background-color: white; /* Màu nền trắng */
+                padding: 10px;
+            }
+
+                .toolbar i {
+                    color: black; /* Màu biểu tượng đen */
+                    font-size: 20px;
+                    margin: 0 10px; /* Khoảng cách giữa các biểu tượng */
+                    cursor: pointer;
+                }
+
+            .icon img {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+
+            .icon {
+                background-color: #FEF4EC; /* Màu nền của icon */
+                margin: 5px; /* Khoảng cách giữa các icon */
+                padding: 5px; /* Khoảng cách bên trong icon */
+                border-radius: 5px; /* Độ bo góc của icon */
+                transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+            }
+
+                .icon:hover {
+                    background-color: #ddd; /* Màu nền khi di chuột qua */
+                }
+
+                .icon:active {
+                    background-color: #aaa; /* Màu nền khi click */
+                }
+
+            /* Add styles for other elements as needed */
+        </style>
+
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+
+            <p>
+                @Html.ActionLink("THOÁT", "Index", null, new { style = "color: red;" })
+            </p>
+        </div>
+    </div>
+</div>
+
+

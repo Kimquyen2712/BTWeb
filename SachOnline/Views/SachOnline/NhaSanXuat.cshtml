@@ -1,0 +1,98 @@
+﻿@using SachOnline.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Book>
+@{
+    ViewBag.Title = "NhaSanXuat";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}
+<!-- product section start -->
+<div class="product_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="product_taital">Theo loại sản phẩm</h1>
+                <p class="product_text">---------------------------------------------------------</p>
+                @foreach (var loaisanpham in Model)
+                {
+                    <p class="product_taital" >@loaisanpham.NhaXuatBan.NhaXuatBanName</p>
+                    break;
+                }
+            </div>
+        </div>
+        <div class="product_section_2 layout_padding">
+            <div class="row">
+                @foreach (var sach in Model)
+                {
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product_box">
+                            <h4 class="bursh_text"> @Truncate(@sach.Title, 16)</h4>
+
+                            <img src="~/Images/@sach.Images" class="image_1">
+                            <div class="btn_main">
+                                <div class="buy_bt">
+                                    <ul>
+                                        <li class="active"><a href="@Url.Action("ChiTietSach", "SachOnline", new { id = sach.BookID })">Buy Now</a></li>
+
+                                    </ul>
+                                </div>
+                                <h3 class="price_text"> @string.Format("{0:#,##0,0}", @sach.Price)</h3>
+                            </div>
+
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="seemore_bt"><a href="#">See More</a></div>
+        </div>
+    </div>
+</div>
+<!-- product section end -->
+@*Tạo liên kết các trang*@
+
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("NhaSanXuat", new { iMaNXB = ViewBag.NhaXuatBanID, page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+    }
+
+        .pagination li {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+            .pagination li.active {
+                background-color: #337ab7;
+                color: #fff;
+            }
+</style>
+
+

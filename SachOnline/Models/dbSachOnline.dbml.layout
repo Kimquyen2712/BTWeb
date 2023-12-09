@@ -1,13 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13" name="dbSachOnline">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 13" name="dbSachOnline">
   <DataContextMoniker Name="/dbSachOnlineDataContext" />
   <nestedChildShapes>
-    <classShape Id="bd05b5ef-2ee1-4fb6-8e9d-e3c85eed999c" absoluteBounds="6.75, 6.375, 2, 2.5401025390625005">
-      <DataClassMoniker Name="/dbSachOnlineDataContext/ADMIN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e801afa8-fafc-4e9f-b476-cfcd33244fc2" absoluteBounds="6.765, 6.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="ba68044c-228e-466c-8371-d27aa74aa3a0" absoluteBounds="3.5, 7.125, 2, 1.7708968098958327">
       <DataClassMoniker Name="/dbSachOnlineDataContext/Author" />
       <nestedChildShapes>
@@ -56,35 +50,35 @@
         <elementListCompartment Id="41a1d683-59e8-472c-b25a-3e68785c085a" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 4.59699625651042); (3.5 : 4.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.59699625651042); (3.5 : 4.59699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbSachOnlineDataContext/Category/Category_Book" />
       <nodes>
         <classShapeMoniker Id="7af374ce-23c1-49f1-b7ee-8ca5f3912992" />
         <classShapeMoniker Id="68730463-e4b1-48dc-a792-da031269c197" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.53929768880208); (5.79166666666667 : 4.53929768880208 : JumpStart); (5.95833333333333 : 4.53929768880208 : JumpEnd); (6.25 : 4.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 4.53929768880208); (5.79166666666667 : 4.53929768880208 : JumpStart); (5.95833333333333 : 4.53929768880208 : JumpEnd); (6.25 : 4.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbSachOnlineDataContext/Book/Book_CHITIETDATHANG" />
       <nodes>
         <classShapeMoniker Id="68730463-e4b1-48dc-a792-da031269c197" />
         <classShapeMoniker Id="972d3b51-7780-4cad-82f3-c550e907f933" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 11.4815991210937); (6.46875 : 11.4815991210937); (6.46875 : 5.32859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 11.4815991210937); (6.28125 : 11.4815991210937); (6.28125 : 5.32859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbSachOnlineDataContext/DONDATHANG/DONDATHANG_CHITIETDATHANG" />
       <nodes>
         <classShapeMoniker Id="53908b7a-b203-4ae6-9c3f-6b217b9d9a7e" />
         <classShapeMoniker Id="972d3b51-7780-4cad-82f3-c550e907f933" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 11.4815991210937); (3.5 : 11.4815991210937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 11.4815991210937); (3.5 : 11.4815991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbSachOnlineDataContext/KHACHHANG/KHACHHANG_DONDATHANG" />
       <nodes>
         <classShapeMoniker Id="2a8ba177-37cd-4e6f-b7b4-2d894ee51263" />
         <classShapeMoniker Id="53908b7a-b203-4ae6-9c3f-6b217b9d9a7e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 2.5624995); (4.5 : 2.5624995); (4.5 : 3.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 2.5312475); (4.23437375 : 2.5312475); (4.23437375 : 3.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbSachOnlineDataContext/NhaXuatBan/NhaXuatBan_Book" />
       <nodes>
         <classShapeMoniker Id="f58690d3-e132-4e02-a097-f18e2e45c1fe" />
@@ -98,11 +92,30 @@
         <classShapeMoniker Id="aeaabb00-56ea-4fc5-b5f8-26361c3639d8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.0312525 : 3.125); (5.0312525 : 1.96519903320312); (5.79166666666667 : 1.96519903320312 : JumpStart); (5.95833333333333 : 1.96519903320312 : JumpEnd); (6.25 : 1.96519903320312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.0312525 : 3.125); (5.0312525 : 1.53929768880208); (6.25 : 1.53929768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbSachOnlineDataContext/Book/Book_VIETSACH" />
       <nodes>
         <classShapeMoniker Id="68730463-e4b1-48dc-a792-da031269c197" />
         <classShapeMoniker Id="aeaabb00-56ea-4fc5-b5f8-26361c3639d8" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="99450790-5222-4314-829b-4f901e5f47c9" absoluteBounds="9.125, 7, 2, 2.5401025390624996">
+      <DataClassMoniker Name="/dbSachOnlineDataContext/ADMIN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4ad61b8-7bc9-4f00-9a8e-657b3ad27d87" absoluteBounds="9.14, 7.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d68a5033-509a-4286-8ffb-7223bb1c791e" absoluteBounds="6.375, 7.625, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/dbSachOnlineDataContext/QUYEN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a5146606-0eb8-4d7b-92b4-e1a5ba1183ae" absoluteBounds="6.39, 8.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.375 : 8.22199625651042); (9.125 : 8.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSachOnlineDataContext/QUYEN/QUYEN_ADMIN" />
+      <nodes>
+        <classShapeMoniker Id="d68a5033-509a-4286-8ffb-7223bb1c791e" />
+        <classShapeMoniker Id="99450790-5222-4314-829b-4f901e5f47c9" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -22,7 +22,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2 style="text-align:center">QUẢN LÝ THÔNG TIN SÁCH</h2>
+<h2 style="text-align:center">QUẢN LÝ THÔNG TIN SẢN PHẨM</h2>
 
 <p>
     @Html.ActionLink("Thêm mới", "Create")
@@ -59,7 +59,7 @@
             <th></th>*@
 
         <th style="text-align:center;width:140px">
-            Tên sách
+            Tên sản phẩm
         </th>
         <th style="text-align:center;width:200px">
             Mô tả
@@ -77,10 +77,10 @@
             @Html.DisplayNameFor(model => model.First().Price)
         </th>
         <th style="text-align:center;width:100px">
-            Chủ đề
+            Bộ sưu tập
         </th>
         <th style="text-align:center;width:100px">
-            Nhà xuất bản
+            Loại sản phẩm
         </th>
         <th style="text-align:center"></th>
     </tr>

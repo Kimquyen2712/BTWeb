@@ -34,8 +34,18 @@ namespace SachOnline.Controllers
             if (sp == null)
             {
                 sp = new GioHang(ms);
-                lstGioHang.Add(sp);
                 
+                Book balo = db.Books.SingleOrDefault(b => b.BookID == sp.iMaSach);
+                if (balo.ViewCount <=0)
+                {
+                    return RedirectToAction("Hetsanpham", "GioHang");
+                }
+                else
+                {
+                    lstGioHang.Add(sp);
+                }
+
+
             }
             else
             {
@@ -138,12 +148,14 @@ namespace SachOnline.Controllers
             //Kiểm tra Sách đã có trong Session["GioHang"]
             GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSach == iMaSach);
             //Xóa sp khỏi giỏ hàng
-            if (sp != null) {
+            if (lstGioHang.Count == 1)
+            {
+                lstGioHang.Clear();
+                return RedirectToAction("Index", "SachOnline");
+            }
+            else if (sp != null) {
                 lstGioHang.RemoveAll(n => n.iMaSach == iMaSach);
-                if (lstGioHang.Count == 0)
-                {
-                    return RedirectToAction("Index", "SachOnlie");
-                }
+                
             }
             return RedirectToAction("GioHang");
         }
@@ -199,6 +211,7 @@ namespace SachOnline.Controllers
             ViewBag.TongSoLuong= TongSoLuong();
 
             ViewBag.TongTien = TongTien();
+            
             return View(lstGioHang);
     }
 
@@ -208,6 +221,7 @@ namespace SachOnline.Controllers
             //Thêm đơn hàng
             DONDATHANG ddh = new DONDATHANG();
             KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
+            
             List<GioHang> lstGioHang = LayGioHang();
             ddh.MaKH = kh.MaKH;
             ddh.Ngaydat = DateTime.Now;
@@ -226,6 +240,12 @@ namespace SachOnline.Controllers
                 ctdh.Soluong = item.iSoLuong;
                 ctdh.Dongia = (decimal)item.dDongia;
                 db.CHITIETDATHANGs.InsertOnSubmit(ctdh);
+                Book balo = db.Books.SingleOrDefault(b => b.BookID == item.iMaSach);
+                if (balo != null)
+                {
+                    balo.ViewCount = balo.ViewCount - ctdh.Soluong;
+                }
+               
             }
             db.SubmitChanges();
             Session["GioHang"] = null;
@@ -235,7 +255,16 @@ namespace SachOnline.Controllers
         //Thêm phương thức xác nhận đơn hàng
         public ActionResult XacNhanDonHang()
         {
+
             return View();
         }
+
+        public ActionResult Hetsanpham()
+        {
+
+            return View();
+        }
+
+
     }
 }

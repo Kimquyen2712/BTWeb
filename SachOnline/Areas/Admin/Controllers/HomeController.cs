@@ -18,10 +18,18 @@ namespace SachOnline.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
+            if (Session["Admin"] == null || Session["Admin"].ToString() == "")
 
+            {
+                return RedirectToAction("Login", "Home");
+
+            }
             return View();
         }
-        
+        public ActionResult xinchao()
+        {
+            return PartialView("xinchao");
+        }
         [HttpGet]
         public ActionResult Login()
         {
@@ -41,7 +49,9 @@ namespace SachOnline.Areas.Admin.Controllers
                 if (ad != null)
                 {
                     Session["Admin"] = ad;
-                    return RedirectToAction("Index", "Home");
+                    if (ad.QUYEN1.Quyen == 1) { return RedirectToAction("Index", "Home"); }
+                    else { return RedirectToAction("Index", "Home"); }
+                    
                 }
                 else
                 {
@@ -49,6 +59,18 @@ namespace SachOnline.Areas.Admin.Controllers
                 }
                 return View();
             
+        }
+        public ActionResult Dangxuat()
+        {
+            // Xóa thông tin đăng nhập của người dùng, ví dụ: xóa Session
+            Session["Admin"] = null;
+
+            // Redirect về trang chính hoặc trang đăng nhập
+            return RedirectToAction("Login"); // Điều hướng về trang chính
+        }
+        public ActionResult Quyenthaotac()
+        {
+            return View();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace SachOnline.Models
         public DateTime? Ngaygiao { get; set; }
         public bool Dathanhtoan { get; set; }
         public bool Tinhtranggiaohang { get; set; }
+        
         public int? Soluong { get; set; }
         
         public decimal? Dongia { get; set; }

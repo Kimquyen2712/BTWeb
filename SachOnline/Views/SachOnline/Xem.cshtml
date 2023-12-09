@@ -1,0 +1,213 @@
+﻿
+@using SachOnline.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<DONDATHANG>
+
+@{
+    ViewBag.Title = "Xem";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!-- Thêm Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iN17Np6dF+JpDjOKJKjsS/DIeq1i6D5YevvB6egU6W6/8U5P6b1wZl81l" crossorigin="anonymous">
+<div class="toolbar">
+    <i class="icon" id="icon1"><a href="@Url.Action("taikhoan","SachOnline") "><img src="~/images/taikhoan.png"></a></i>
+    <i class="icon" id="icon2"><a href="@Url.Action("thaydoi","User") "><img src="~/images/suataikhoan.png"></a></i>
+    <i class="icon" id="icon3"><a href="@Url.Action("xem","SachOnline") "><img src="~/images/donhangcu.png"></a></i>
+</div>
+
+
+
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}
+<!-- product section start -->
+
+<div class="product_section layout_padding">
+    <div class="container">
+
+        
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="customer_taital">LỊCH SỬ MUA HÀNG</h1>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <h1 style="color: pink;">Tổng số đơn hàng: @ViewBag.DemDonHang </h1>
+        </div>
+
+
+
+        <div class="product_section_2 layout_padding">
+            <div class="row">
+
+                @foreach (var sach in Model)
+                {
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product_box">
+                            <h4 class="bursh_text">Mã đơn: @sach.MaDonHang</h4>
+                            <p>
+                                Người nhận: @sach.KHACHHANG.HoTen
+
+                            </p>
+                            <p>
+                                Địa chỉ: @sach.KHACHHANG.DiachiKH
+
+                            </p>
+                            <p>
+                                Điện thoại: @sach.KHACHHANG.DienThoaiKH
+
+                            </p>
+                            <p>
+                                @if (sach.Tinhtranggiaohang == 1)
+                                {
+                                    <span style="color: red;">Đang chờ xác nhận</span>
+                                }
+                                else if (sach.Tinhtranggiaohang == 2)
+                                {
+                                    <span style="color: green;">Đang giao</span>
+                                }
+                                else
+                                {
+                                <span style="color: green;">Đã giao</span>
+                                }
+                            </p>
+
+                            <p>
+                                @if (sach.Dathanhtoan == false)
+                                {
+                                    <span style="color: red;">Chưa thanh toán</span>
+                                }
+                                else
+                                {
+                                    <span style="color: green;">Đã thanh toán</span>
+                                }
+                            </p>
+                            <p>
+                                Ngày đặt: @Html.FormatValue(@sach.Ngaydat, "{0:dd/MM/yyyy}")
+                            </p>
+                            <p>
+                                Ngày giao:  @Html.FormatValue(@sach.Ngaygiao, "{0:dd/MM/yyyy}")
+                            </p>
+                            <div class="btn_main">
+                                <div class="buy_bt">
+                                    <ul>
+                                        <a href="@Url.Action("Xemchitietcuadonhang", new { id=sach.MaDonHang })" class="btn btn-primary" role="button">Chi tiết</a>
+                                    </ul>
+                                </div>
+                                <h3 class="price_text"></h3>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+            @*<div class="seemore_bt"><a href="#">See More</a></div>*@
+        </div>
+
+    </div>
+</div>
+<!-- product section end -->
+@*Tạo liên kết các trang*@
+
+    Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount<div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Xemlai", new { page = page }))
+    </div>
+    <style>
+        .MenuTrang {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+            .pagination li {
+                margin: 0 5px;
+                padding: 5px 10px;
+                background-color: #f4f4f4;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+            }
+
+                .pagination li.active {
+                    background-color: #337ab7;
+                    color: #fff;
+                }
+
+        .btn_main {
+            border: 1px solid #ff69b4; /* Màu đường viền khung (màu hồng) */
+            padding: 10px; /* Độ dày của đường viền */
+            background-color: #fff0f5; /* Màu nền khung (màu hồng nhạt) */
+            border-radius: 5px; /* Độ cong của góc khung */
+        }
+
+            .btn_main a.btn {
+                background-color: #ff69b4; /* Màu nền của nút (màu hồng) */
+                color: #fff; /* Màu chữ của nút (trắng) */
+                padding: 8px 15px; /* Độ dày và khoảng cách của nút */
+                border-radius: 3px; /* Độ cong của góc nút */
+                text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+                /* CSS để thiết lập màu nền và màu biểu tượng */
+            }
+
+        .toolbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px; /* Điều chỉnh chiều cao theo nhu cầu của bạn */
+            background-color: white; /* Màu nền trắng */
+            padding: 10px;
+        }
+
+            .toolbar i {
+                color: black; /* Màu biểu tượng đen */
+                font-size: 20px;
+                margin: 0 10px; /* Khoảng cách giữa các biểu tượng */
+                cursor: pointer;
+            }
+
+        .icon img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .icon {
+            background-color: #FEF4EC; /* Màu nền của icon */
+            margin: 5px; /* Khoảng cách giữa các icon */
+            padding: 5px; /* Khoảng cách bên trong icon */
+            border-radius: 5px; /* Độ bo góc của icon */
+            transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+        }
+
+            .icon:hover {
+                background-color: #ddd; /* Màu nền khi di chuột qua */
+            }
+
+            .icon:active {
+                background-color: #aaa; /* Màu nền khi click */
+            }
+    </style>
+
+
+
+
+

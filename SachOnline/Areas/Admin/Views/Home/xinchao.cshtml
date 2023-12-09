@@ -1,0 +1,16 @@
+﻿@using SachOnline.Models
+@{
+    ADMIN kh = (ADMIN)Session["Admin"];
+}
+
+@*Tùy chọn hiển thị*@
+@if (Session["Admin"] == null)//Giao dien Logout
+{
+    <li><a href="~/Home/Login"><span class="glyphicon glyphicon-log-in"></span>Đăng nhập</a></li>
+}
+else //Giao dien Logout
+{
+    <li><a href="#">Xin chào: @kh.HoTen</a></li>
+    <li><a href="@Url.Action("Dangxuat","Home")">Đăng xuất</a></li>
+
+}

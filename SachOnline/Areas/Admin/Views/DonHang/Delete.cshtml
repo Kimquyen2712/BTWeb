@@ -61,9 +61,13 @@
 
         <dd>
             @{
-                if (Model.Tinhtranggiaohang == 0)
+                if (Model.Tinhtranggiaohang == 1)
                 {
-                    <span style="color: red;">Đang giao</span>
+                    <span style="color: red;">Đang chờ xác nhận</span>
+                }
+                else if (Model.Tinhtranggiaohang == 2)
+                {
+                    <span style="color: green;">Đang giao</span>
                 }
                 else
                 {

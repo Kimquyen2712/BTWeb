@@ -102,21 +102,23 @@
 
                 </button>
 
-        <a class="navbar-brand" href="@Url.Action("Index","Home")"> SachOnlineAdmin</a> </div>
+        <a class="navbar-brand" href="@Url.Action("Index","Home")"> TRANG CHỦ</a> </div>
 
             <div class="collapse navbar-collapse" id="navAdmin">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.Action("Index", "Sach" )">QUẢN LÝ SÁCH </a> </li>
+                    <li><a href="@Url.Action("Index", "Sach" )">QUẢN LÝ SẢN PHẨM </a> </li>
 
-                    
 
-                        <li><a href="@Url.Action("Index","ChuDe")">QUẢN LÝ CHỦ ĐỀ</a> </li>
-                        <li><a href="@Url.Action("Index", "NhaXuatBan")">QUẢN LÝ NHÀ XUẤT BẢN</a> </li>
-                        <li><a href="@Url.Action("Index", "KhachHang")">QUẢN LÝ KHÁCH HÀNG</a> </li>
 
-                        <li><a href="@Url.Action("Index", "DonHang")">QUẢN LÝ ĐƠN HÀNG</a></li>
+                    <li><a href="@Url.Action("Index","ChuDe")">QUẢN LÝ BỘ SƯU TẬP</a> </li>
+                    <li><a href="@Url.Action("Index", "NhaXuatBan")">QUẢN LÝ LOẠI SẢN PHẨM</a> </li>
+                    <li><a href="@Url.Action("Index", "KhachHang")">QUẢN LÝ KHÁCH HÀNG</a> </li>
 
-                    </ul>
+                    <li><a href="@Url.Action("Index", "DonHang")">QUẢN LÝ ĐƠN HÀNG</a></li>
+                    <li><a href="@Url.Action("Index", "Quyen")">QUẢN LÝ QUYỀN</a></li>
+                    <li><a href="@Url.Action("Index", "Admin")">QUẢN LÝ NHÂN VIÊN VÀ CHỨC VỤ</a></li>
+                    <li>@Html.Action("xinchao", "Home")</li>
+                </ul>
             </div>
 
 </div>

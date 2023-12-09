@@ -8,62 +8,102 @@
         height: 40px;
     }
 </style>
-<h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
-<table align="center">
-    <h2 style="text-align:center">ĐĂNG KÝ THÀNH VIÊN</h2>
-    @using (Html.BeginForm("DangKy", "User"))
-    {
-        @Html.ValidationSummary(true)
-        <tr>
-            <td>Họ tên:</td>
-            <td>@Html.TextBox("HoTen") @ViewData["Loi1"]</td>
-        </tr>
-        <tr>
-            <td>Tên đăng nhập:</td>
-            <td>@Html.TextBox("TenDN") @ViewData["Loi2"]</td>
-        </tr>
+<!-- about section start -->
+<div class="about_section layout_padding">
+    <div class="container">
+        <div class="about_section_main">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about_taital_main">
+                        <h1 class="about_taital">Đăng ký thành viên mới</h1>
+                        <p class="about_text">
+                            Lợi Ích của Việc Đăng Ký:<br>
+                            Truy Cập Tính Năng Đặc Biệt:<br>
 
-        <tr>
-            <td>Mật khẩu:</td>
-            <td>@Html.Password("MatKhau") @ViewData["Loi3"]</td>
-        </tr>
+                            Thành viên thường có quyền truy cập các tính năng và chức năng mà người dùng thông thường không thể sử dụng.<br>
+                            Ưu Đãi và Khuyến Mãi:<br>
 
-        <tr>
-            <td>Mật khẩu nhập lại:</td>
-            <td>@Html.Password("MatKhauNL") @ViewData["Loi4"]</td>
-        </tr>
+                            Các chương trình khuyến mãi, giảm giá, hay quà tặng đặc biệt thường dành riêng cho thành viên.<br>
+                            Quản lý Tài Khoản:<br>
 
-        <tr>
-            <td>Email:</td>
+                            Người dùng có thể quản lý thông tin cá nhân, thay đổi mật khẩu, và theo dõi lịch sử giao dịch của họ.<br>
+                            Giao Tiếp và Thông Báo:<br>
 
-            <td>@Html.TextBox("Email", null, new { type = "email", required = "required", pattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$", placeholder = "example@example.com" }) @ViewData["Loi5"]</td>
-        </tr>
+                            Thành viên thường nhận được thông báo và cập nhật đặc biệt từ trang web.<br>
+                            Nếu đã có tài khoản hãy nhấn vào đường dẫn sau để đăng nhập!!!
+                        </p>
 
-        <tr>
-            <td>Điện thoại:</td>
-            <td>@Html.TextBox("DienThoai") @ViewData["Loi6"]</td>
-        </tr>
+                        <a href="/User/Dangnhap" style="color: #ff0000;">Đã có tài khoản</a>
 
-        <tr>
-            <td>Ngày sinh:</td>
-            <td><input type="date" name="NgaySinh" /></td>
-        </tr>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
+                        <table align="center">
+                            <h2 style="text-align:center">ĐĂNG KÝ THÀNH VIÊN</h2>
+                            @using (Html.BeginForm("DangKy", "User"))
+                            {
+                                @Html.ValidationSummary(true)
+                                <tr>
+                                    <td>Họ tên:</td>
+                                    <td>@Html.TextBox("HoTen") @ViewData["Loi1"]</td>
+                                </tr>
+                                <tr>
+                                    <td>Tên đăng nhập:</td>
+                                    <td>@Html.TextBox("TenDN") @ViewData["Loi2"]</td>
+                                </tr>
 
-        <tr>
-            <td>Địa chỉ:</td>
-            <td><input type="text" name="DiaChi" /></td>
-        </tr>
+                                <tr>
+                                    <td>Mật khẩu:</td>
+                                    <td>@Html.Password("MatKhau") @ViewData["Loi3"]</td>
+                                </tr>
 
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Đăng ký" />  <input type="reset" value="Xóa
-Thông Tin" />
-            </td>
+                                <tr>
+                                    <td>Mật khẩu nhập lại:</td>
+                                    <td>@Html.Password("MatKhauNL") @ViewData["Loi4"]</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Email:</td>
+
+                                    <td>@Html.TextBox("Email", null, new { type = "email", required = "required", pattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$", placeholder = "example@example.com" }) @ViewData["Loi5"]</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Điện thoại:</td>
+                                    <td>@Html.TextBox("DienThoai") @ViewData["Loi6"]</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Ngày sinh:</td>
+                                    <td><input type="date" name="NgaySinh" /></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Địa chỉ:</td>
+                                    <td><input type="text" name="DiaChi" /></td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" value="Đăng ký" style="background-color: #f09393; color: white; padding: 10px;">
+                                        <input type="reset" value="Xóa Thông Tin" style="background-color: #ed6032; color: white; padding: 10px;">
+                                    </td>
 
 
 
-        </tr>
 
-    }
-</table>
+                                </tr>
+
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->
+

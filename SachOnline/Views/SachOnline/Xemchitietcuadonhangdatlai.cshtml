@@ -1,0 +1,152 @@
+﻿@using SachOnline.Models;
+@using PagedList.Mvc;
+@model SachOnline.Models.OrderDetailsViewModel
+
+
+@{
+    ViewBag.Title = "Xemchitietcuadonhangdatlai";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="product_section layout_padding">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="customer_taital">XÁC NHẬN ĐƠN HÀNG</h1>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <h1 style="color: green;">CHI TIẾT ĐƠN ĐẶT HÀNG</h1>
+        </div>
+
+        <div class="order-details-container">
+
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Mã đơn hàng:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Order.MaDonHang)
+                </dd>
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Mã khách hàng:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Order.KHACHHANG.MaKH)
+                </dd>
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Tên khách hàng:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Order.KHACHHANG.HoTen)
+                </dd>
+
+
+
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Ngày đặt:
+                </dt>
+
+                <dd>
+                    @Html.FormatValue(DateTime.Now, "{0:dd/MM/yyyy}")
+                </dd>
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    Ngày giao:
+                </dt>
+
+                <dd>
+
+                    @Html.FormatValue(DateTime.Now.AddDays(5), "{0:dd/MM/yyyy}")
+
+                </dd>
+                <dt>
+                    Số lượng:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Soluong)
+                </dd>
+
+
+                <dt>
+                    Mã sản phẩm:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OrderDetails.FirstOrDefault().BookID)
+                </dd>
+                <dt>
+                    Tên sản phẩm:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OrderDetails.FirstOrDefault().Title)
+                </dd>
+                <dt>
+                    Đơn giá:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Dongia)
+                </dd>
+
+            </dl>
+
+        </div>
+
+        <style>
+            .order-details-container {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dl-horizontal {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 0;
+            }
+
+                .dl-horizontal dt {
+                    flex-basis: 30%;
+                    text-align: right;
+                    margin-right: 10px;
+                }
+
+                .dl-horizontal dd {
+                    flex-basis: 65%;
+                    margin-bottom: 10px;
+                }
+
+            .order-details-container h2 {
+                text-align: center;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            /* Add styles for other elements as needed */
+        </style>
+
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <p>
+                <a href="@Url.Action("MuaLaiDonHang", new { madon = Model.Order.MaDonHang})">XÁC NHẬN MUA HÀNG</a>
+            </p>
+
+            <p>
+                @Html.ActionLink("THOÁT", "Xem", null, new { style = "color: red;" })
+            </p>
+        </div>
+
+    </div>
+</div>
+
+

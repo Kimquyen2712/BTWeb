@@ -17,10 +17,27 @@ namespace SachOnline.Areas.Admin.Controllers
 
         public ActionResult Index(int? page)
         {
+            if (Session["Admin"] == null || Session["Admin"].ToString() == "")
 
-            int iPageNum = (page ?? 1);
-            int iPageSize = 10;
-            return View(db.Categories.ToList().OrderBy(n => n.CategoryID).ToPagedList(iPageNum, iPageSize));
+            {
+                return RedirectToAction("Login", "Home");
+
+            }
+            else
+
+            {
+                ADMIN kh = (ADMIN)Session["Admin"];
+                var sach = db.ADMINs.SingleOrDefault(n => n.Quyen == kh.Quyen);
+                if (sach.Quyen == 1)
+                {
+                    int iPageNum = (page ?? 1);
+                    int iPageSize = 10;
+                    return View(db.Categories.ToList().OrderBy(n => n.CategoryID).ToPagedList(iPageNum, iPageSize));
+                }
+                return RedirectToAction("Quyenthaotac", "Home");
+
+            }
+            
         }
         [HttpGet]
         public ActionResult Create()

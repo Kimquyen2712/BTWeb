@@ -17,6 +17,12 @@ namespace SachOnline.Areas.Admin.Controllers
         dbSachOnlineDataContext db = new dbSachOnlineDataContext();
         public ActionResult Index()
         {
+            if (Session["Admin"] == null || Session["Admin"].ToString() == "")
+
+            {
+                return RedirectToAction("Login", "Home");
+
+            }
             return View();
         }
 

@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<SachOnline.Models.NhaXuatBan>
 
-<ul class="list-group">
-    <li class="list-group-item active" style="font-weight:bold; text-align:center">SÁCH THEO NHÀ XUẤT BẢN</li>
 
+<ul class="list-group" style="padding: 2px; font-size: 14px; height: 200px; overflow-y: auto; background-color: rgba(0, 0, 0, 0); border: none;">
+    <li class="list-group-item active text-white" style="font-weight: bold; text-align: center; padding: 8px; background-color: rgba(0, 0, 0, 0.05); border: none;">-- LOẠI SẢN PHẨM --</li>
 
     @foreach (var item in Model)
     {
-
-        <a href="@Url.Action("SachTheoNhaXuatBan", "SachOnline", new { iMaNXB = item.NhaXuatBanID })"
-           class="list-group-item">@item.NhaXuatBanName</a>
+        <a href="@Url.Action("NhaSanXuat", "SachOnline", new { iMaNXB = item.NhaXuatBanID })" class="list-group-item" style="padding: 8px; background-color: rgba(0, 0, 0, 0); border: none;">
+            @item.NhaXuatBanName
+        </a>
     }
 </ul>
 

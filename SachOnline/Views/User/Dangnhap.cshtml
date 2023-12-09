@@ -5,42 +5,78 @@
 }
 
 <style type="text/css">
-td{height:40px;}
+    td {
+        height: 40px;
+    }
 </style>
-<h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
-    <h2 style="text-align:center;">ĐĂNG NHẬP</h2>
-    <table align="center">
-        @using (Html.BeginForm())
-         {
-            @Html.ValidationSummary(true)
-        <tr>
-            <td>Tên đăng nhập: </td>
-            <td>
-                @Html.TextBox("TenDN")
-                @ViewData["Loi1"]
-            </td>
+<div class="about_section layout_padding">
+    <div class="container">
+        <div class="about_section_main">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about_taital_main">
+                        <h1 class="about_taital">
+                            Đăng nhập <br />
+                            Chào mừng bạn đã đến với MyQueen:<br><br />
+                        </h1>
+                        <p class="about_text">
 
-        </tr>
-        <tr>
 
-            <td>Mật khẩu: </td>
-            <td>
+                            CHÚC BẠN MUA SẮM HIỆU QUẢ !!!!<br>
 
-                @Html.Password("MatKhau")
-                @ViewData["Loi2"]
-            </td>
+                            <br>
+                            Nếu chưa có tài khoản hãy nhấn vào đường dẫn sau để đăng ký!!!
+                        </p>
 
-        </tr>
-        <tr>
+                        <a href="/User/Dangky" style="color: #ff0000;">Chưa có tài khoản</a></br>
+                        <a href="/User/QuenMatKhauSoDienThoai" style="color: #ff0000;">Quên mật khẩu</a></br>
+                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
+                        <h2 style="text-align:center;">ĐĂNG NHẬP</h2>
+                        <table align="center">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true)
+                                <tr>
+                                    <td>Tên đăng nhập: </td>
+                                    <td>
+                                        @Html.TextBox("TenDN")
+                                        @ViewData["Loi1"]
+                                    </td>
 
-            <td></td>
-            <td>
-                <input type="submit" value="Đăng nhập" />
-            </td>
-            <td>
-                @Html.ActionLink("Chưa có tài khoản", "Dangky", "User")
-            </td>
-        </tr>
-            }
-    </table>
+                                </tr>
+                                <tr>
+
+                                    <td>Mật khẩu: </td>
+                                    <td>
+
+                                        @Html.Password("MatKhau")
+                                        @ViewData["Loi2"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" value="Đăng nhập" style="background-color: #ee8888; color: white; padding: 10px;">
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->
+
 

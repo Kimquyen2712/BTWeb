@@ -6,7 +6,7 @@
 }
 
 
-<h2>THÊM SÁCH</h2>
+<h2>THÊM SẢN PHẨM</h2>
 @*Thêm thuộc tính cho form để upload ảnh*@
 @using (Html.BeginForm("Create", "Sach", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
@@ -22,7 +22,7 @@
                     @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                 </div>*@
-            <label class="control-label col-md-2">Tên sách:</label>
+            <label class="control-label col-md-2">Tên sản phẩm:</label>
             <div class="col-md-10">
                 <input type="text" size="70" name="sTenSach" value="@ViewBag.TenSach" required />
             </div>
@@ -110,7 +110,7 @@
                     @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
                 </div>*@
-            <label class="control-label col-md-2">Chủ đề:</label>
+            <label class="control-label col-md-2">Bộ sưu tập:</label>
             <div class="col-md-10">
                 @*Hiển thị ViewBag.MaCD vào dropdownlist*@
                 @Html.DropDownList("CategoryID")
@@ -129,7 +129,7 @@
                     @Html.EditorFor(model => model.NhaXuatBanID, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.NhaXuatBanID, "", new { @class = "text-danger" })
                 </div>*@
-            <label class="control-label col-md-2">Nhà xuất bản:</label>
+            <label class="control-label col-md-2">Loại sản phẩm:</label>
             <div class="col-md-10">
                 @Html.DropDownList("NhaXuatBanID")
             </div>
@@ -144,5 +144,5 @@
 }
 
 <div>
-    @Html.ActionLink("VỀ TRANG QUẢN LÝ SÁCH", "Index")
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ SẢN PHẨM", "Index")
 </div>

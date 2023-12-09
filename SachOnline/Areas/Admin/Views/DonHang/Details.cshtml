@@ -66,9 +66,13 @@
 
         <dd>
             @{
-                if (Model.Order.Tinhtranggiaohang == 0)
+                if (Model.Order.Tinhtranggiaohang == 1)
                 {
-                    <span style="color: red;">Đang giao</span>
+                    <span style="color: red;">Đang chờ xác nhận</span>
+                }
+                else if (Model.Order.Tinhtranggiaohang == 2)
+                {
+                    <span style="color: green;">Đang giao</span>
                 }
                 else
                 {
@@ -124,5 +128,5 @@
 
 <p>
     @Html.ActionLink("Sửa", "Edit", new { id = Model.Order.MaDonHang }) |
-    @Html.ActionLink("VỀ TRANG QUẢN LÝ SÁCH", "Index")
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ ĐƠN HÀNG", "Index")
 </p>

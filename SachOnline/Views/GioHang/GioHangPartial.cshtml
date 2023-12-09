@@ -1,6 +1,13 @@
-﻿<a href="@Url.Action("GioHang","GioHang")">
-    @* <img src="~/Images/giohang.png"/>*@
-    <span class="glyphicon glyphicon-shopping-cart"></span>
-    Giỏ hàng (@ViewBag.TongSoLuong)
-</a>
+﻿
+@*<a href="@Url.Action("GioHang","GioHang")" style="color: #8B4513;">
+    <img src="~/images/giohang1.png">
+    <span class="glyphicon glyphicon-shopping-cart" ></span>
+    (@ViewBag.TongSoLuong)
+</a>*@
 
+<a href="@Url.Action("GioHang","GioHang")" style="color: #8B4513; position: relative;">
+    <img src="~/images/giohang1.png">
+    <span class="glyphicon glyphicon-shopping-cart" style="position: absolute;"></span>
+    <span class="badge" style="position: absolute; top: 5px; right: 5px; background-color: #FF6347; border-radius: 50%; padding: 5px;">@ViewBag.TongSoLuong</span>
+    
+</a>

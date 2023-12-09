@@ -1,0 +1,31 @@
+﻿@model SachOnline.Models.QUYEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT QUYỀN</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            Tên quyền:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuyenName)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Quyen }) |
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ QUYỀN", "Index")
+</p>
+
+

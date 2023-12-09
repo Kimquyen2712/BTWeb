@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "thaydoimatkhau";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style type="text/css">
+    td {
+        height: 40px;
+    }
+</style>
+<div class="about_section layout_padding">
+    <div class="container">
+        <div class="about_section_main">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about_taital_main">
+                        <h1 class="about_taital">
+                            
+                            Thay đổi mật khẩu:<br><br />
+                        </h1>
+                        <p class="about_text">
+
+
+                            Vui lòng ghi nhớ mật khẩu này !!!!<br>
+
+                            <br>
+
+                        </p>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
+                        <h2 style="text-align:center;">THAY ĐỔI MẬT KHẨU</h2>
+                        <table align="center">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true)
+                               
+                                <tr>
+
+                                    <td>Mật khẩu mới: </td>
+                                    <td>
+                                        @Html.Password("Matkhau3")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>Nhập lại mật khẩu </td>
+                                    <td>
+
+                                        @Html.Password("Matkhau4")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" value="Xác nhận" style="background-color: #ee8888; color: white; padding: 10px;">
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->

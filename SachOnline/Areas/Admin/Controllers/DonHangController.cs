@@ -16,6 +16,13 @@ namespace SachOnline.Areas.Admin.Controllers
         // GET: Admin/DonHang
         public ActionResult Index(int? page)
         {
+            if (Session["Admin"] == null || Session["Admin"].ToString() == "")
+
+            {
+                return RedirectToAction("Login", "Home");
+
+            }
+
             int iPageNum = page ?? 1;
             int iPageSize = 7;
 
@@ -35,7 +42,7 @@ namespace SachOnline.Areas.Admin.Controllers
                               BookID = ms.BookID,
                               Title = ms.Title,
                               Dongia = ctdh.Dongia
-                          }).OrderBy(d => d.MaDonHang).ToPagedList(iPageNum, iPageSize);
+                          }).OrderByDescending(s => s.Ngaydat).ToPagedList(iPageNum, iPageSize);
 
             return View(ketqua);
         }
@@ -401,6 +408,7 @@ namespace SachOnline.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        
 
     }
 }

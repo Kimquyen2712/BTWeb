@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "thaydoi";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iN17Np6dF+JpDjOKJKjsS/DIeq1i6D5YevvB6egU6W6/8U5P6b1wZl81l" crossorigin="anonymous">
+<div class="toolbar">
+    <i class="icon" id="icon1"><a href="@Url.Action("taikhoan","SachOnline") "><img src="~/images/taikhoan.png"></a></i>
+    <i class="icon" id="icon2"><a href="@Url.Action("thaydoi","User") "><img src="~/images/suataikhoan.png"></a></i>
+    <i class="icon" id="icon3"><a href="@Url.Action("xem","SachOnline") "><img src="~/images/donhangcu.png"></a></i>
+</div>
+<style type="text/css">
+    td {
+        height: 40px;
+    }
+</style>
+<div class="about_section layout_padding">
+    <div class="container">
+        <div class="about_section_main">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about_taital_main">
+                        <h1 class="about_taital">
+                            Thay đổi thông tin <br /><br />
+
+                        </h1>
+                        <p class="about_text">
+
+
+                            Vui lòng điền vào những thông tin bạn muốn thay đổi !!!!<br>
+
+                            <br>
+
+                        </p>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
+                        <h2 style="text-align:center;">THAY ĐỔI THÔNG TIN</h2>
+                        <table align="center">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true)
+
+                                <tr>
+
+                                    <td>Họ tên: </td>
+                                    <td>
+                                        @Html.TextBox("HoTen")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>Địa chỉ mới: </td>
+                                    <td>
+                                        @Html.TextBox("DiachiKH")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>Email mới: </td>
+                                    <td>
+                                        @Html.TextBox("Email")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>Số điện thoại mới: </td>
+                                    <td>
+                                        @Html.TextBox("DienthoaiKH")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Ngày sinh: </td>
+                                    <td>
+
+
+                                        <!-- Razor View Example -->
+                                        @Html.TextBox("Ngaysinh", null, new { type = "date" })
+
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" value="Xác nhận" style="background-color:darkseagreen; color: white; padding: 10px;">
+                                    </td>
+                                    <td>
+                                        <a href="/User/thaydoimatkhau" style="color:burlywood;">Thay đổi mật khẩu</a>
+                                    </td>
+
+                                </tr>
+                            }
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .toolbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        background-color: white;
+        padding: 10px;
+    }
+
+    .icon img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .icon {
+        background-color: #FEF4EC; /* Màu nền của icon */
+        margin: 5px; /* Khoảng cách giữa các icon */
+        padding: 5px; /* Khoảng cách bên trong icon */
+        border-radius: 5px; /* Độ bo góc của icon */
+        transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+    }
+
+        .icon:hover {
+            background-color: #ddd; /* Màu nền khi di chuột qua */
+        }
+
+        .icon:active {
+            background-color: #aaa; /* Màu nền khi click */
+        }
+
+</style>

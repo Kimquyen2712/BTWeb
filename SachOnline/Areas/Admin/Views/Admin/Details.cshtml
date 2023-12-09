@@ -1,0 +1,97 @@
+﻿@model SachOnline.Models.ADMIN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2>CHI TIẾT NHÂN VIÊN</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            Tên nhân viên:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            Điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            Tên đăng nhập:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDN)
+        </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            Mật khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Title)*@
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+
+
+
+        <dt>
+            @* @Html.DisplayNameFor(model => model.Published)*@
+            Ngày sinh:
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Published)*@
+            @Html.FormatValue(Model.NgaySinh, "{0:dd/MM/yyyy}")
+        </dd>
+        <dt>
+            @*@Html.DisplayNameFor(model => model.CategoryID)*@
+            Quyền:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QUYEN1.QuyenName)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaAdmin }) |
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ NHÂN VIÊN", "Index")
+</p>

@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "matkhaumoi";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style type="text/css">
+    td {
+        height: 40px;
+    }
+</style>
+<div class="about_section layout_padding">
+    <div class="container">
+        <div class="about_section_main">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about_taital_main">
+                        <h1 class="about_taital">
+                            Quên mật khẩu <br />
+                            Chào mừng bạn đã đến với MyQueen:<br><br />
+                        </h1>
+                        <p class="about_text">
+
+
+                            Vui lòng điền vào số điện thoại và email đã đăng ký !!!!<br>
+
+                            <br>
+
+                        </p>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
+                        <h2 style="text-align:center;">QUÊN MẬT KHẨU</h2>
+                        <table align="center">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true)
+                                <tr>
+
+                                    <td>Tên đăng nhập: </td>
+                                    <td>
+                                        @Html.TextBox("TenDN")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+
+                                    <td>Số điện thoại: </td>
+                                    <td>
+                                        @Html.TextBox("Dienthoai")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+
+                                    <td>Mật khẩu mới: </td>
+                                    <td>
+                                        @Html.Password("Matkhau1")
+                                        @ViewData["Loi1"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>Nhập lại mật khẩu </td>
+                                    <td>
+
+                                        @Html.Password("Matkhau2")
+                                        @ViewData["Loi2"]
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" value="Xác nhận" style="background-color: #ee8888; color: white; padding: 10px;">
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->
